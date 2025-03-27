@@ -1,0 +1,2 @@
+password: osmmsadmin@2024
+username: Admin

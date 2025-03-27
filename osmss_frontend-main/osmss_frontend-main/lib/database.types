@@ -1,0 +1,158 @@
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      profiles: {
+        Row: {
+          id: string
+          first_name: string
+          last_name: string
+          username: string
+          roles: string[] | null
+          qr_token: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          first_name: string
+          last_name: string
+          username: string
+          roles?: string[] | null
+          qr_token?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          first_name?: string
+          last_name?: string
+          username?: string
+          roles?: string[] | null
+          qr_token?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      items: {
+        Row: {
+          id: number
+          name: string
+          unit_type: string
+          bulk_quantity: number
+          pieces_quantity: number
+          low_threshold_bulk: number
+          low_threshold_pcs: number
+          moderate_threshold_bulk: number
+          moderate_threshold_pcs: number
+          high_threshold_bulk: number
+          high_threshold_pcs: number
+          stock_status: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          name: string
+          unit_type?: string
+          bulk_quantity?: number
+          pieces_quantity?: number
+          low_threshold_bulk?: number
+          low_threshold_pcs?: number
+          moderate_threshold_bulk?: number
+          moderate_threshold_pcs?: number
+          high_threshold_bulk?: number
+          high_threshold_pcs?: number
+          stock_status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          name?: string
+          unit_type?: string
+          bulk_quantity?: number
+          pieces_quantity?: number
+          low_threshold_bulk?: number
+          low_threshold_pcs?: number
+          moderate_threshold_bulk?: number
+          moderate_threshold_pcs?: number
+          high_threshold_bulk?: number
+          high_threshold_pcs?: number
+          stock_status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      item_history: {
+        Row: {
+          id: number
+          item_id: number
+          quantity: number
+          is_bulk: boolean
+          action: string
+          reason: string | null
+          user_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: number
+          item_id: number
+          quantity: number
+          is_bulk?: boolean
+          action: string
+          reason?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: number
+          item_id?: number
+          quantity?: number
+          is_bulk?: boolean
+          action?: string
+          reason?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "item_history_item_id_fkey"
+            columns: ["item_id"]
+            referencedRelation: "items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "item_history_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
+}
+

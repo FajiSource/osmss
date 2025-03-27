@@ -1,0 +1,47 @@
+/* Custom styles for QR scanner */
+[id^="qr-reader"] {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Hide unnecessary elements from the HTML5QRCode library */
+[id^="qr-reader"] [id$="__dashboard_section_swaplink"] {
+  display: none !important;
+}
+
+[id^="qr-reader"] [id$="__dashboard_section_csr"] button {
+  display: none !important;
+}
+
+[id^="qr-reader"] [id$="__status_span"] {
+  display: none !important;
+}
+
+/* Make sure the dashboard doesn't have unwanted styling */
+[id^="qr-reader"] [id$="__dashboard"] {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Override default styles that might cause issues */
+[id^="qr-reader"] * {
+  box-sizing: border-box !important;
+}
+
+/* Ensure video element is properly styled */
+[id^="qr-reader"] video {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Fix for camera container */
+[id^="qr-reader"] [id$="__scan_region"] {
+  text-align: center !important;
+  min-height: 200px !important;
+}
+
